@@ -1,7 +1,8 @@
-# tmpl-java-library
+# Dwarf
 
-Template for Java library project
+Properties
 
 ---
 developed by Elex
+
 https://www.elex-project.com

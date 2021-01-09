@@ -6,8 +6,8 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "1.0-SNAPSHOT"
-description = ""
+version = "2.0.0"
+description = "Properties"
 
 // Repository credential, Must be defined in ~/.gradle/gradle.properties
 val repoUser : String by project
@@ -46,7 +46,7 @@ tasks.jar {
 				"Implementation-Title" to project.name,
 				"Implementation-Version" to project.version,
 				"Implementation-Vendor" to "ELEX co.,pte.",
-				"Automatic-Module-Name" to "${project.group}.${project.name}"
+				"Automatic-Module-Name" to "com.elex_project.dwarf"
 		))
 	}
 }
@@ -78,14 +78,9 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				// todo
 				name.set(project.name)
 				description.set(project.description)
-				url.set("https://")
-				properties.set(mapOf(
-						"myProp" to "value",
-						"prop.with.dots" to "anotherValue"
-				))
+				url.set("https://github.com/elex-project/dwarf-properties")
 				licenses {
 					license {
 						// todo
@@ -101,20 +96,15 @@ publishing {
 					}
 				}
 				scm {
-					// todo
-					connection.set("scm:git:https://github.com/my-library.git")
-					developerConnection.set("scm:git:https://github.com/my-library.git")
-					url.set("https://github.com/my-library/")
+					connection.set("scm:git:https://github.com/elex-project/dwarf-properties.git")
+					developerConnection.set("scm:git:https://github.com/elex-project/dwarf-properties.git")
+					url.set("https://github.com/elex-project/dwarf-properties")
 				}
 			}
 		}
 	}
 
 	repositories {
-		maven {
-			name = "mavenLocal"
-			url = uri("file://${buildDir}/repo")
-		}
 		maven {
 			name = "mavenElex"
 			val releaseUrl = uri("https://repository.elex-project.com/repository/maven-releases/")
@@ -146,7 +136,6 @@ dependencies {
 tasks.register("printHello") {
 	group = "elex"
 	doLast {
-		println("-?$repoUser")
 		println("Hello")
 
 	}
