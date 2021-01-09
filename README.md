@@ -2,7 +2,7 @@
 
 Properties with a value and its value change listeners.
 
-## Add Repository
+## Gradle: Add Repository and Dependency
 ```kotlin
 repositories {
 	mavenCentral()
@@ -15,9 +15,12 @@ repositories {
 		}
 	}
 }
+dependencies {
+	implementation("com.elex-project:properties:2.0.1")
+}
 ```
 
-## Sample code
+## Usage
 ```java
 StringProperty property = new StringProperty();
 PropertyListener<String> listener = new PropertyListener<String>() {
