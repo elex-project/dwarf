@@ -1,6 +1,6 @@
-# Dwarf
+# Project Dwarf
 
-Properties with a value and its value change listeners
+Properties with a value and its value change listeners.
 
 ```java
 StringProperty property = new StringProperty();

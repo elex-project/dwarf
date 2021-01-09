@@ -38,22 +38,19 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "2.0.0"
+version = "2.0.1"
 description = "Properties"
 
-// Repository credential, Must be defined in ~/.gradle/gradle.properties
-val repoUser : String by project
-val repoPassword : String by project
-
 repositories {
+	mavenCentral()
 	maven {
+		name = "Github Packages"
+		url = uri("https://maven.pkg.github.com/")
 		credentials {
-			username = repoUser
-			password = repoPassword
+			username = project.findProperty("github.username") as String
+			password = project.findProperty("github.token") as String
 		}
-		url = uri("https://repository.elex-project.com/repository/maven/")
 	}
-
 }
 
 java {
@@ -137,14 +134,11 @@ publishing {
 
 	repositories {
 		maven {
-			name = "mavenElex"
-			val releaseUrl = uri("https://repository.elex-project.com/repository/maven-releases/")
-			val snapshotUrl = uri("https://repository.elex-project.com/repository/maven-snapshots/")
-			url = if (version.toString().endsWith("SNAPSHOT") ) snapshotUrl else releaseUrl
-
+			name = "mavenGithub"
+			url = uri("https://maven.pkg.github.com/elex-project/dwarf.properties")
 			credentials {
-				username = repoUser
-				password = repoPassword
+				username = project.findProperty("github.username") as String
+				password = project.findProperty("github.token") as String
 			}
 		}
 	}
@@ -162,12 +156,4 @@ dependencies {
 	testImplementation("ch.qos.logback:logback-classic:1.2.3")
 	testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-}
-
-tasks.register("printHello") {
-	group = "elex"
-	doLast {
-		println("Hello")
-
-	}
 }

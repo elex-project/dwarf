@@ -52,7 +52,7 @@ abstract class NumberProperty<T extends Number> extends AbsProperty<T> {
 
 	@Override
 	public String toString() {
-		return (null == getValue()) ? StringProperty.EMPTY_STRING : String.valueOf(getValue());
+		return (null == getValue()) ? EMPTY_STRING : String.valueOf(getValue());
 	}
 
 	@Override

@@ -47,6 +47,7 @@ import java.util.ArrayList;
  */
 @EqualsAndHashCode
 abstract class AbsProperty<T> implements Property<T>, Serializable {
+	protected static final String EMPTY_STRING = "";
 
 	private T value;
 	@EqualsAndHashCode.Exclude
@@ -71,7 +72,7 @@ abstract class AbsProperty<T> implements Property<T>, Serializable {
 
 	@Override
 	public String toString() {
-		if (null == this.value) return "";
+		if (null == this.value) return EMPTY_STRING;
 		return this.value.toString();
 	}
 
@@ -81,7 +82,7 @@ abstract class AbsProperty<T> implements Property<T>, Serializable {
 				|| (null != this.value && this.value.equals(value))) return;
 		final T oldValue = this.value;
 		this.value = value;
-		for (PropertyListener<T> listener : listeners) {
+		for (final PropertyListener<T> listener : listeners) {
 			listener.onValueChanged(oldValue, this.value);
 		}
 	}

@@ -40,7 +40,6 @@ import org.jetbrains.annotations.Nullable;
  * @author Elex
  */
 public final class StringProperty extends AbsProperty<String> {
-	static final String EMPTY_STRING = "";
 
 	/**
 	 * String property with initial value ""

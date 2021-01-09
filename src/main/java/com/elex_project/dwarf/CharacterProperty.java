@@ -59,7 +59,7 @@ public final class CharacterProperty extends AbsProperty<Character> {
 
 	@Override
 	public String toString() {
-		return (null == getValue()) ? StringProperty.EMPTY_STRING : getValue().toString();
+		return (null == getValue()) ? EMPTY_STRING : getValue().toString();
 	}
 
 	@Override
