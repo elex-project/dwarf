@@ -8,7 +8,7 @@ repositories {
 	mavenCentral()
 	maven {
 		name = "Github Packages"
-		url = uri("https://maven.pkg.github.com/elex-project/dwarf.properties")
+		url = uri("https://maven.pkg.github.com/elex-project/dwarf")
 		credentials {
 			username = project.findProperty("github.username") as String
 			password = project.findProperty("github.token") as String
@@ -16,7 +16,7 @@ repositories {
 	}
 }
 dependencies {
-	implementation("com.elex-project:properties:2.0.1")
+	implementation("com.elex-project:properties:2.0.2")
 }
 ```
 

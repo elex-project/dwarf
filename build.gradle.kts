@@ -38,19 +38,11 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "2.0.1"
-description = "Properties"
+version = "2.0.2"
+description = "Properties with a value and its value change listeners"
 
 repositories {
 	mavenCentral()
-	maven {
-		name = "Github Packages"
-		url = uri("https://maven.pkg.github.com/")
-		credentials {
-			username = project.findProperty("github.username") as String
-			password = project.findProperty("github.token") as String
-		}
-	}
 }
 
 java {
@@ -109,11 +101,11 @@ publishing {
 			pom {
 				name.set(project.name)
 				description.set(project.description)
-				url.set("https://github.com/elex-project/dwarf-properties")
+				url.set("https://github.com/elex-project/dwarf")
 				licenses {
 					license {
 						name.set("BSD 3-Clause License")
-						url.set("https://github.com/elex-project/dwarf.properties/blob/main/LICENSE")
+						url.set("https://github.com/elex-project/dwarf/blob/main/LICENSE")
 					}
 				}
 				developers {
@@ -124,9 +116,9 @@ publishing {
 					}
 				}
 				scm {
-					connection.set("scm:git:https://github.com/elex-project/dwarf.properties.git")
-					developerConnection.set("scm:git:https://github.com/elex-project/dwarf.properties.git")
-					url.set("https://github.com/elex-project/dwarf.properties")
+					connection.set("scm:git:https://github.com/elex-project/dwarf.git")
+					developerConnection.set("scm:git:https://github.com/elex-project/dwarf.git")
+					url.set("https://github.com/elex-project/dwarf")
 				}
 			}
 		}
@@ -135,7 +127,7 @@ publishing {
 	repositories {
 		maven {
 			name = "mavenGithub"
-			url = uri("https://maven.pkg.github.com/elex-project/dwarf.properties")
+			url = uri("https://maven.pkg.github.com/elex-project/dwarf")
 			credentials {
 				username = project.findProperty("github.username") as String
 				password = project.findProperty("github.token") as String
