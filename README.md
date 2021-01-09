@@ -2,6 +2,22 @@
 
 Properties with a value and its value change listeners.
 
+## Add Repository
+```kotlin
+repositories {
+	mavenCentral()
+	maven {
+		name = "Github Packages"
+		url = uri("https://maven.pkg.github.com/elex-project/dwarf.properties")
+		credentials {
+			username = project.findProperty("github.username") as String
+			password = project.findProperty("github.token") as String
+		}
+	}
+}
+```
+
+## Sample code
 ```java
 StringProperty property = new StringProperty();
 PropertyListener<String> listener = new PropertyListener<String>() {
