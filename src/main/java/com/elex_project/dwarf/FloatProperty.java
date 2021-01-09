@@ -30,5 +30,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Float property
+ *
+ * @author Elex
+ */
+public final class FloatProperty extends NumberProperty<Float> {
+	/**
+	 * Float property with initial value 0
+	 */
+	public FloatProperty() {
+		super(0f);
+	}
+
+	/**
+	 * Float property
+	 *
+	 * @param value initial value
+	 */
+	public FloatProperty(@Nullable final Float value) {
+		super(value);
+	}
+
+}

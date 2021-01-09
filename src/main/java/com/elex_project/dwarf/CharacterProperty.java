@@ -30,5 +30,53 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Character property
+ *
+ * @author Elex
+ */
+public final class CharacterProperty extends AbsProperty<Character> {
+
+	/**
+	 * Character property with initial value ' '
+	 */
+	public CharacterProperty() {
+		super(' ');
+	}
+
+	/**
+	 * Character property
+	 *
+	 * @param value initial value
+	 */
+	public CharacterProperty(@Nullable final Character value) {
+		super(value);
+	}
+
+	@Override
+	public String toString() {
+		return (null == getValue()) ? StringProperty.EMPTY_STRING : getValue().toString();
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (o instanceof Character) {
+			return o.equals(getValue());
+		} else {
+			return super.equals(o);
+		}
+	}
+
+	@Override
+	protected boolean canEqual(final Object other) {
+		if (other instanceof Character || other instanceof Property) {
+			return true;
+		} else {
+			return super.canEqual(other);
+		}
+	}
+}

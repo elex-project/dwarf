@@ -30,5 +30,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class IntegerPropertyTest {
+
+	@Test
+	void test(){
+		IntegerProperty integerProperty = new IntegerProperty(100);
+		ShortProperty shortProperty = new ShortProperty((short)100);
+
+		assertEquals(integerProperty, shortProperty.getValue());
+	}
+}

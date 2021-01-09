@@ -30,5 +30,80 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import lombok.EqualsAndHashCode;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * Base class for properties
+ *
+ * @param <T> type of a value
+ * @author Elex
+ */
+@EqualsAndHashCode
+abstract class AbsProperty<T> implements Property<T>, Serializable {
+
+	private T value;
+	@EqualsAndHashCode.Exclude
+	private final ArrayList<PropertyListener<T>> listeners;
+
+	/**
+	 * A property with initial value 'null'
+	 */
+	public AbsProperty() {
+		this(null);
+	}
+
+	/**
+	 * A Property
+	 *
+	 * @param value initial value
+	 */
+	public AbsProperty(@Nullable T value) {
+		this.listeners = new ArrayList<>();
+		this.value = value;
+	}
+
+	@Override
+	public String toString() {
+		if (null == this.value) return "";
+		return this.value.toString();
+	}
+
+	@Override
+	public void setValue(@Nullable final T value) {
+		if ((null == this.value && null == value)
+				|| (null != this.value && this.value.equals(value))) return;
+		final T oldValue = this.value;
+		this.value = value;
+		for (PropertyListener<T> listener : listeners) {
+			listener.onValueChanged(oldValue, this.value);
+		}
+	}
+
+	@Override
+	@Nullable
+	public T getValue() {
+		return value;
+	}
+
+	@Override
+	public void addListener(@NotNull final PropertyListener<T> listener) {
+		this.listeners.add(listener);
+	}
+
+	@Override
+	public void removeListener(@NotNull final PropertyListener<T> listener) {
+		this.listeners.remove(listener);
+	}
+
+	@Override
+	public void removeAllListeners() {
+		this.listeners.clear();
+	}
+}

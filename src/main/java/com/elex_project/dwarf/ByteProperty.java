@@ -30,5 +30,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Byte property
+ *
+ * @author Elex
+ */
+public final class ByteProperty extends NumberProperty<Byte> {
+	/**
+	 * Byte property with initial value 0
+	 */
+	public ByteProperty() {
+		super((byte) 0);
+	}
+
+	/**
+	 * Byte property
+	 *
+	 * @param value initial value
+	 */
+	public ByteProperty(@Nullable final Byte value) {
+		super(value);
+	}
+
+}

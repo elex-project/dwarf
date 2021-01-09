@@ -30,5 +30,47 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+/**
+ * Property has a value,
+ * and notify to listeners when the value is changed.
+ *
+ * @param <T> type of the value
+ *
+ * @author Elex
+ */
+public interface Property<T> {
+	/**
+	 * set a value
+	 *
+	 * @param value value
+	 */
+	public void setValue(final T value);
+
+	/**
+	 * get a value
+	 *
+	 * @return value
+	 */
+	public T getValue();
+
+	/**
+	 * Add a listener
+	 *
+	 * @param listener a listener to listen value change events
+	 */
+	public void addListener(final PropertyListener<T> listener);
+
+	/**
+	 * Remoce a listener
+	 *
+	 * @param listener listener
+	 */
+	public void removeListener(final PropertyListener<T> listener);
+
+	/**
+	 * Remoce all listeners
+	 */
+	public void removeAllListeners();
+}

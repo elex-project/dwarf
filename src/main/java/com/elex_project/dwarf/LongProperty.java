@@ -30,5 +30,31 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Long property
+ *
+ * @author Elex
+ */
+public final class LongProperty extends NumberProperty<Long> {
+	/**
+	 * Long property with initial value 0
+	 */
+	public LongProperty() {
+		super(0L);
+	}
+
+	/**
+	 * Long property
+	 *
+	 * @param value initial value
+	 */
+	public LongProperty(@Nullable final Long value) {
+		super(value);
+	}
+
+
+}

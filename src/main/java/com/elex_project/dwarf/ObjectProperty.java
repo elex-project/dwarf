@@ -30,5 +30,37 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+import static com.elex_project.dwarf.StringProperty.EMPTY_STRING;
+
+/**
+ * General object property
+ *
+ * @author Elex
+ */
+public final class ObjectProperty<T> extends AbsProperty<T> {
+	/**
+	 * General object property with initial value ""
+	 */
+	public ObjectProperty() {
+		super(null);
+	}
+
+	/**
+	 * General object property
+	 *
+	 * @param value initial value
+	 */
+	public ObjectProperty(@Nullable final T value) {
+		super(value);
+	}
+
+	@Override
+	public String toString() {
+		return (null == getValue()) ? EMPTY_STRING : getValue().toString();
+	}
+
+}

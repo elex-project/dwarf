@@ -30,5 +30,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Double property
+ *
+ * @author Elex
+ */
+public final class DoubleProperty extends NumberProperty<Double> {
+	/**
+	 * Float property with initial value 0
+	 */
+	public DoubleProperty() {
+		super(0d);
+	}
+
+	/**
+	 * Double property
+	 *
+	 * @param value initial value
+	 */
+	public DoubleProperty(@Nullable final Double value) {
+		super(value);
+	}
+
+}

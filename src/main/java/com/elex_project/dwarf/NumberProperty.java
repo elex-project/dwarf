@@ -30,5 +30,50 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "properties"
+package com.elex_project.dwarf;
 
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Number property
+ *
+ * @param <T> number
+ */
+abstract class NumberProperty<T extends Number> extends AbsProperty<T> {
+
+	/**
+	 * Number property
+	 *
+	 * @param value initial value
+	 */
+	public NumberProperty(@Nullable final T value) {
+		super(value);
+	}
+
+	@Override
+	public String toString() {
+		return (null == getValue()) ? StringProperty.EMPTY_STRING : String.valueOf(getValue());
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (o instanceof Number) {
+			return o.equals(this.getValue());
+		} else if (o instanceof NumberProperty
+				&& null != ((NumberProperty<?>) o).getValue()) {
+			return ((NumberProperty<?>) o).getValue().equals(this.getValue());
+		} else {
+			return super.equals(o);
+
+		}
+	}
+
+	@Override
+	protected boolean canEqual(final Object other) {
+		if (other instanceof Number || other instanceof Property) {
+			return true;
+		} else {
+			return super.canEqual(other);
+		}
+	}
+}
