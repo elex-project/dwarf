@@ -34,33 +34,59 @@ package com.elex_project.dwarf;
 
 import org.jetbrains.annotations.Nullable;
 
-import static com.elex_project.dwarf.StringProperty.EMPTY_STRING;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
- * General object property
+ * Date property
  *
  * @author Elex
  */
-public final class ObjectProperty<T> extends AbsProperty<T> {
+public final class DateProperty extends AbsProperty<Date> {
+	private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
 	/**
-	 * General object property with initial value, null
+	 * LocalDate property with initial value, today.
 	 */
-	public ObjectProperty() {
-		super(null);
+	public DateProperty() {
+		super(new Date());
 	}
 
 	/**
-	 * General object property
+	 * LocalDate property
 	 *
-	 * @param value initial value
+	 * @param value
 	 */
-	public ObjectProperty(@Nullable final T value) {
+	public DateProperty(@Nullable final Date value) {
 		super(value);
 	}
 
 	@Override
-	public String toString() {
-		return (null == getValue()) ? EMPTY_STRING : getValue().toString();
+	public boolean equals(final Object o) {
+		if (o instanceof Date) {
+			return o.equals(getValue());
+		} else {
+			return super.equals(o);
+		}
 	}
 
+	@Override
+	protected boolean canEqual(final Object other) {
+		if (other instanceof Date || other instanceof DateProperty) {
+			return true;
+		} else {
+			return super.canEqual(other);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return (null == getValue()) ? EMPTY_STRING
+				: DATE_FORMAT.format(getValue());
+	}
 }

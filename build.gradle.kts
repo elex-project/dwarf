@@ -38,7 +38,7 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "2.0.2"
+version = "2.0.3"
 description = "Properties with a value and its value change listeners"
 
 repositories {
