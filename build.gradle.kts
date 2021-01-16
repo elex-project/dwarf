@@ -38,12 +38,13 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "2.0.3"
+version = "2.0.4"
 description = "Properties with a value and its value change listeners"
 
 repositories {
-	mavenCentral()
-	mavenLocal()
+	maven {
+		url = uri("https://repository.elex-project.com/repository/maven")
+	}
 }
 
 java {
@@ -126,6 +127,16 @@ publishing {
 	}
 
 	repositories {
+		maven {
+			name = "mavenElex"
+			val urlRelease = uri("https://repository.elex-project.com/repository/maven-releases")
+			val urlSnapshot = uri("https://repository.elex-project.com/repository/maven-snapshots")
+			url = if (version.toString().endsWith("SNAPSHOT")) urlSnapshot else urlRelease
+			credentials {
+				username = project.findProperty("repo.username") as String
+				password = project.findProperty("repo.password") as String
+			}
+		}
 		maven {
 			name = "mavenGithub"
 			url = uri("https://maven.pkg.github.com/elex-project/dwarf")
