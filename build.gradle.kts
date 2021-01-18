@@ -38,7 +38,7 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "2.0.4"
+version = "2.0.5"
 description = "Properties with a value and its value change listeners"
 
 repositories {
@@ -101,7 +101,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				name.set(project.name)
+				name.set("Properties")
 				description.set(project.description)
 				url.set("https://github.com/elex-project/dwarf")
 				licenses {
